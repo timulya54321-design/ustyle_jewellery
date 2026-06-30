@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>U’Style Jewellery — Ювелирный дом Санкт-Петербург</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8f6;
+            color: #1e1e1e;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .top-bar {
+            background: #ffffff;
+            border-bottom: 1px solid #eae6e1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 20px;
+            padding: 16px 0;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #2c2c2c;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover {
+            color: #b28b5e;
+        }
+
+        .logo-area {
+            text-align: center;
+            padding: 28px 0 12px 0;
+            border-bottom: 1px solid #f0ede8;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #1e1e1e;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #887a6e;
+            margin-top: 8px;
+        }
+
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid #efeae4;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #b28b5e;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .card-item {
+            background: #fff;
+            padding: 20px 16px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s;
+            border: 1px solid #f1ede8;
+        }
+
+        .card-item i {
+            font-size: 2.4rem;
+            color: #b28b5e;
+            margin-bottom: 16px;
+        }
+
+        .specs-table {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow-x: auto;
+            border: 1px solid #e9e2da;
+        }
+
+        .specs-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .specs-table th,
+        .specs-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid #efebe6;
+        }
+
+        .specs-table th {
+            background: #fcf9f5;
+            font-weight: 600;
+            color: #3f2e23;
+        }
+
+        .catalog-section {
+            margin-top: 20px;
+        }
+
+        .jewelry-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            border-left: 3px solid #b28b5e;
+            padding-left: 20px;
+        }
+
+        .category-title i {
+            font-size: 2rem;
+            color: #b28b5e;
+        }
+
+        .category-title h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.3px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        .jewel-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #ede5dd;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .jewel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .jewel-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: #f6f2ec;
+            display: block;
+            border-bottom: 1px solid #f0e9e2;
+        }
+
+        .jewel-info {
+            padding: 20px 18px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .jewel-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            color: #2c241e;
+            margin-bottom: 8px;
+        }
+
+        .jewel-desc {
+            font-size: 0.85rem;
+            color: #6b5a4c;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .jewel-meta {
+            font-size: 0.8rem;
+            color: #9b846f;
+            border-top: 1px dashed #e9dfd5;
+            padding-top: 10px;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .jewel-meta span {
+            background: #f9f4ef;
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+
+        .jewel-price {
+            margin-top: 14px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #b28b5e;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .jewel-price small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #a1876e;
+        }
+
+        footer {
+            background: #1e1a16;
+            color: #ddd6cf;
+            padding: 48px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .footer-col h4 {
+            color: #f0e2d4;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #cbc2b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #b28b5e;
+        }
+
+        .footer-contacts {
+            margin-top: 8px;
+        }
+
+        .footer-contacts p {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contacts i {
+            width: 24px;
+            color: #b28b5e;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2f2822;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .copyright {
+            color: #9e948b;
+        }
+
+        .legal {
+            color: #9e948b;
+            font-size: 0.7rem;
+        }
+
+        .highlight {
+            color: #b28b5e;
+        }
+
+        @media (max-width: 800px) {
+            .nav-links { gap: 10px 12px; }
+            .nav-links li a { font-size: 0.7rem; white-space: nowrap; }
+            .logo-main { font-size: 2rem; }
+            section { padding: 50px 0; }
+            .photo-grid { gap: 20px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="#brand">О бренде</a></li>
+            <li><a href="#catalog">Каталог</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#promo">Акции</a></li>
+            <li><a href="#guarantee">Гарантия</a></li>
+            <li><a href="#shops">Магазины</a></li>
+            <li><a href="#vacancies">Вакансии</a></li>
+            <li><a href="#giftcards">Подарочные карты</a></li>
+            <li><a href="#orders">Заказы</a></li>
+            <li><a href="#return">Обмен и возврат</a></li>
+            <li><a href="#delivery">Доставка</a></li>
+            <li><a href="#status">Статус заказа</a></li>
+            <li><a href="#cooperation">Сотрудничество</a></li>
+            <li><a href="#faq">Вопросы и ответы</a></li>
+            <li><a href="#sizes">Таблица карат/размеров</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="logo-area">
+    <div class="container">
+        <div class="logo-main">U’Style Jewellery</div>
+        <div class="logo-sub">САНКТ-ПЕТЕРБУРГ • 2026</div>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <!-- О БРЭНДЕ -->
+        <section id="brand">
+            <h2 class="section-title">О бренде</h2>
+            <p style="font-size:1.05rem; line-height:1.5; max-width: 90%;">U’Style Jewellery — петербургский ювелирный дом. С 2016 года мы создаём украшения, отражающие индивидуальность. Наши коллекции вдохновлены архитектурой Северной столицы. Золото 585, бриллианты, инновационный дизайн.</p>
+            <div style="margin-top:30px; display:flex; gap:20px; flex-wrap:wrap;">
+                <div><i class="fas fa-gem highlight"></i> Эксклюзивный дизайн</div>
+                <div><i class="fas fa-certificate highlight"></i> Сертификаты на камни</div>
+                <div><i class="fas fa-hand-sparkles highlight"></i> Собственное производство в СПб</div>
+            </div>
+        </section>
+
+        <!-- КАТАЛОГ С ЦЕНАМИ (ВСЕ ФОТО 1PHOTO.JPG ... 18PHOTO.JPG) -->
+        <section id="catalog">
+            <h2 class="section-title">Каталог украшений</h2>
+            <div class="catalog-section">
+                <!-- СЕРЬГИ: фото 1photo, 2photo, 3photo -->
+                <div class="jewelry-category">
+                    <div class="category-title"><i class="fas fa-gem"></i><h3>Серьги</h3></div>
+                    <div class="photo-grid">
+                        <div class="jewel-card"><img class="jewel-img" src="1photo.jpg" alt="Серьги" onerror="this.src='https://via.placeholder.com/400x260?text=1photo.jpg'"><div class="jewel-info"><div class="jewel-name">Серьги «Северное сияние»</div><div class="jewel-desc">Элегантные серьги-подвески с жемчугом</div><div class="jewel-meta"><span>Серебро 925</span><span>Фианиты</span></div><div class="jewel-price">8 990 ₽ <small>/ пара</small></div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="2photo.jpg" alt="Серьги золото" onerror="this.src='https://via.placeholder.com/400x260?text=2photo.jpg'"><div class="jewel-info"><div class="jewel-name">Серьги-пусеты «Классика»</div><div class="jewel-desc">Золото 585, бриллиантовая огранка</div><div class="jewel-meta"><span>Золото 585</span><span>Бриллианты 0.1 ct</span></div><div class="jewel-price">24 500 ₽ <small>/ пара</small></div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="3photo.jpg" alt="Каффы" onerror="this.src='https://via.placeholder.com/400x260?text=3photo.jpg'"><div class="jewel-info"><div class="jewel-name">Серьги-каффы «Астория»</div><div class="jewel-desc">Без прокола, вечерний стиль</div><div class="jewel-meta"><span>Серебро 925 родий</span><span>Кубический цирконий</span></div><div class="jewel-price">5 490 ₽ <small>/ комплект</small></div></div></div>
+                    </div>
+                </div>
+                <!-- КОЛЬЦА: фото 4photo, 5photo, 6photo -->
+                <div class="jewelry-category">
+                    <div class="category-title"><i class="fas fa-ring"></i><h3>Кольца</h3></div>
+                    <div class="photo-grid">
+                        <div class="jewel-card"><img class="jewel-img" src="4photo.jpg" alt="Кольцо" onerror="this.src='https://via.placeholder.com/400x260?text=4photo.jpg'"><div class="jewel-info"><div class="jewel-name">Кольцо «Вдохновение»</div><div class="jewel-desc">Бриллиант 0.25 карат, классика</div><div class="jewel-meta"><span>Золото 585</span><span>Бриллиант</span></div><div class="jewel-price">32 900 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="5photo.jpg" alt="Сапфир" onerror="this.src='https://via.placeholder.com/400x260?text=5photo.jpg'"><div class="jewel-info"><div class="jewel-name">Кольцо «Северный сапфир»</div><div class="jewel-desc">Сапфир синий, белое золото</div><div class="jewel-meta"><span>Белое золото 585</span><span>Сапфир 0.7 ct</span></div><div class="jewel-price">47 200 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="6photo.jpg" alt="Обручальное" onerror="this.src='https://via.placeholder.com/400x260?text=6photo.jpg'"><div class="jewel-info"><div class="jewel-name">Обручальное кольцо «Дуэт»</div><div class="jewel-desc">Два тона золота, дорожка бриллиантов</div><div class="jewel-meta"><span>Золото 750</span><span>Бриллианты</span></div><div class="jewel-price">55 300 ₽</div></div></div>
+                    </div>
+                </div>
+                <!-- ПОДВЕСКИ: фото 7photo, 8photo, 9photo -->
+                <div class="jewelry-category">
+                    <div class="category-title"><i class="fas fa-heart"></i><h3>Подвески</h3></div>
+                    <div class="photo-grid">
+                        <div class="jewel-card"><img class="jewel-img" src="7photo.jpg" alt="Лунный камень" onerror="this.src='https://via.placeholder.com/400x260?text=7photo.jpg'"><div class="jewel-info"><div class="jewel-name">Подвеска «Лунный свет»</div><div class="jewel-desc">Лунный камень, серебро</div><div class="jewel-meta"><span>Серебро 925</span><span>Лунный камень</span></div><div class="jewel-price">4 250 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="8photo.jpg" alt="Крест" onerror="this.src='https://via.placeholder.com/400x260?text=8photo.jpg'"><div class="jewel-info"><div class="jewel-name">Крест «Ангел-хранитель»</div><div class="jewel-desc">Золотой крест, родиевое покрытие</div><div class="jewel-meta"><span>Золото 585</span><span>Проба</span></div><div class="jewel-price">12 700 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="9photo.jpg" alt="Сердце" onerror="this.src='https://via.placeholder.com/400x260?text=9photo.jpg'"><div class="jewel-info"><div class="jewel-name">Подвеска «Сердце Петербурга»</div><div class="jewel-desc">Фианиты, форма сердца</div><div class="jewel-meta"><span>Серебро 925</span><span>Фианиты</span></div><div class="jewel-price">6 390 ₽</div></div></div>
+                    </div>
+                </div>
+                <!-- БРАСЛЕТЫ: фото 10photo, 11photo, 12photo -->
+                <div class="jewelry-category">
+                    <div class="category-title"><i class="fas fa-hand-peace"></i><h3>Браслеты</h3></div>
+                    <div class="photo-grid">
+                        <div class="jewel-card"><img class="jewel-img" src="10photo.jpg" alt="Золотой браслет" onerror="this.src='https://via.placeholder.com/400x260?text=10photo.jpg'"><div class="jewel-info"><div class="jewel-name">Браслет «Венеция»</div><div class="jewel-desc">Плетение, замок-карабин</div><div class="jewel-meta"><span>Золото 585</span><span>Длина 18 см</span></div><div class="jewel-price">28 400 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="11photo.jpg" alt="Родий" onerror="this.src='https://via.placeholder.com/400x260?text=11photo.jpg'"><div class="jewel-info"><div class="jewel-name">Браслет «Гранд»</div><div class="jewel-desc">Массивное звено, родиевое покрытие</div><div class="jewel-meta"><span>Серебро 925 родий</span><span>Фианиты</span></div><div class="jewel-price">7 990 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="12photo.jpg" alt="Кожаный браслет" onerror="this.src='https://via.placeholder.com/400x260?text=12photo.jpg'"><div class="jewel-info"><div class="jewel-name">Браслет-шнурок «Лагуна»</div><div class="jewel-desc">Кожа + серебряная вставка</div><div class="jewel-meta"><span>Серебро 925, кожа</span><span>Регулировка</span></div><div class="jewel-price">4 990 ₽</div></div></div>
+                    </div>
+                </div>
+                <!-- ЦЕПОЧКИ: фото 13photo, 14photo, 15photo -->
+                <div class="jewelry-category">
+                    <div class="category-title"><i class="fas fa-link"></i><h3>Цепочки</h3></div>
+                    <div class="photo-grid">
+                        <div class="jewel-card"><img class="jewel-img" src="13photo.jpg" alt="Цепочка панцирная" onerror="this.src='https://via.placeholder.com/400x260?text=13photo.jpg'"><div class="jewel-info"><div class="jewel-name">Цепочка «Классик»</div><div class="jewel-desc">Панцирное плетение, длина 50 см</div><div class="jewel-meta"><span>Золото 585</span><span>Вес 2.1 г</span></div><div class="jewel-price">13 500 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="14photo.jpg" alt="Цепочка аметист" onerror="this.src='https://via.placeholder.com/400x260?text=14photo.jpg'"><div class="jewel-info"><div class="jewel-name">Цепочка «Аметист»</div><div class="jewel-desc">Серебро, вставка аметист</div><div class="jewel-meta"><span>Серебро 925</span><span>Камень аметист</span></div><div class="jewel-price">5 790 ₽</div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="15photo.jpg" alt="Цепочка якорная" onerror="this.src='https://via.placeholder.com/400x260?text=15photo.jpg'"><div class="jewel-info"><div class="jewel-name">Цепочка «Якорь»</div><div class="jewel-desc">Якорное плетение, универсальная</div><div class="jewel-meta"><span>Позолота на серебре</span><span>Длина 55 см</span></div><div class="jewel-price">6 300 ₽</div></div></div>
+                    </div>
+                </div>
+                <!-- НАБОРЫ: фото 16photo, 17photo, 18photo -->
+                <div class="jewelry-category">
+                    <div class="category-title"><i class="fas fa-gift"></i><h3>Наборы</h3></div>
+                    <div class="photo-grid">
+                        <div class="jewel-card"><img class="jewel-img" src="16photo.jpg" alt="Набор золотой" onerror="this.src='https://via.placeholder.com/400x260?text=16photo.jpg'"><div class="jewel-info"><div class="jewel-name">Набор «Империя»</div><div class="jewel-desc">Серьги + кольцо + подвеска</div><div class="jewel-meta"><span>Золото 585</span><span>Бриллианты 0.5 ct</span></div><div class="jewel-price">79 900 ₽ <small>/ набор</small></div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="17photo.jpg" alt="Серебряный набор" onerror="this.src='https://via.placeholder.com/400x260?text=17photo.jpg'"><div class="jewel-info"><div class="jewel-name">Набор «Белая ночь»</div><div class="jewel-desc">Серьги-гвоздики + браслет</div><div class="jewel-meta"><span>Серебро 925</span><span>Фианиты</span></div><div class="jewel-price">12 990 ₽ <small>/ набор</small></div></div></div>
+                        <div class="jewel-card"><img class="jewel-img" src="18photo.jpg" alt="Подарочный набор" onerror="this.src='https://via.placeholder.com/400x260?text=18photo.jpg'"><div class="jewel-info"><div class="jewel-name">Подарочный набор «Люкс»</div><div class="jewel-desc">Колье + серьги, бархатная упаковка</div><div class="jewel-meta"><span>Позолоченное серебро</span><span>Кубический цирконий</span></div><div class="jewel-price">18 500 ₽ <small>/ набор</small></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ОТЗЫВЫ -->
+        <section id="reviews">
+            <h2 class="section-title">Отзывы</h2>
+            <div class="grid-4">
+                <div class="card-item"><i class="fas fa-star"></i><h4>Анна К.</h4><p>Кольцо с сапфиром — восторг! Доставка за 2 дня.</p><small>10.02.2026</small></div>
+                <div class="card-item"><i class="fas fa-star"></i><h4>Дмитрий С.</h4><p>Подарил подвеску, упаковка шикарная. Вежливый сервис.</p><small>23.01.2026</small></div>
+                <div class="card-item"><i class="fas fa-star"></i><h4>Елена М.</h4><p>Лучший сервис в СПб! Обменяли размер без проблем.</p><small>15.02.2026</small></div>
+                <div class="card-item"><i class="fas fa-star"></i><h4>Татьяна В.</h4><p>Серьги-пусеты – моя любовь. Акция 15% супер!</p><small>05.03.2026</small></div>
+            </div>
+        </section>
+
+        <!-- АКЦИИ -->
+        <section id="promo">
+            <h2 class="section-title">Акции</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div class="card-item" style="flex:1;"><i class="fas fa-tags"></i><h4>−20% на браслеты</h4><p>При заказе от 2-х украшений до 31.03.2026</p></div>
+                <div class="card-item" style="flex:1;"><i class="fas fa-gift"></i><h4>Подарочный сертификат</h4><p>При покупке от 15 000₽ — сертификат 2000₽</p></div>
+                <div class="card-item" style="flex:1;"><i class="fas fa-calendar-alt"></i><h4>8 марта коллекция</h4><p>Бесплатная гравировка на цепочках</p></div>
+            </div>
+        </section>
+
+        <section id="guarantee">
+            <h2 class="section-title">Гарантия</h2>
+            <p><i class="fas fa-shield-alt highlight"></i> Официальная гарантия 24 месяца. Пожизненное сервисное обслуживание: чистка, полировка, ремонт замков.</p>
+        </section>
+
+        <section id="shops">
+            <h2 class="section-title">Магазины в Санкт-Петербурге</h2>
+            <div class="grid-4">
+                <div><i class="fas fa-store"></i> Невский пр., 88</div>
+                <div><i class="fas fa-store"></i> Лиговский пр., 30 (ТЦ Галерея)</div>
+                <div><i class="fas fa-store"></i> Петроградская сторона, ул. Ленина 15</div>
+                <div><i class="fas fa-store"></i> Приморский пр., 72 (ТЦ Атлантика)</div>
+            </div>
+        </section>
+
+        <section id="vacancies">
+            <h2 class="section-title">Вакансии</h2>
+            <p>Присоединяйтесь! Открыты вакансии: продавец-консультант, ювелир-монтировщик, менеджер по работе с клиентами. Резюме: <strong>hr@ustyle.spb</strong></p>
+        </section>
+
+        <section id="giftcards">
+            <h2 class="section-title">Подарочные карты</h2>
+            <p>Номинал от 1000 до 100 000 ₽. Электронные и пластиковые карты — идеальный подарок.</p>
+            <div class="card-item" style="width:250px; margin-top:20px;"><i class="fas fa-credit-card"></i> <h4>Карта «Премиум»</h4><p>Бесплатная доставка + скидка 5%</p></div>
+        </section>
+
+        <section id="orders">
+            <h2 class="section-title">Заказы</h2>
+            <p>Оформляйте заказ на сайте или по телефону +7 (812) 123-45-67. Примерка в салоне или доставка до двери.</p>
+        </section>
+
+        <section id="return">
+            <h2 class="section-title">Обмен и возврат</h2>
+            <p>Обмен и возврат ювелирных изделий надлежащего качества возможен в течение 14 дней согласно ЗоЗПП. Сохраните чек и упаковку.</p>
+        </section>
+
+        <section id="delivery">
+            <h2 class="section-title">Доставка</h2>
+            <p>Курьерская доставка по СПб — 1-2 дня, бесплатно от 10 000 ₽. Самовывоз из шоурумов.</p>
+        </section>
+
+        <section id="status">
+            <h2 class="section-title">Статус заказа</h2>
+            <p>Узнайте статус вашего заказа в личном кабинете или по номеру заказа. Наши менеджеры всегда на связи.</p>
+            <div style="margin-top: 12px; font-size: 0.85rem;"><i class="fas fa-check-circle"></i> Отслеживание доступно в разделе "Мои заказы"</div>
+        </section>
+
+        <section id="cooperation">
+            <h2 class="section-title">Сотрудничество</h2>
+            <p>Предложения для ювелирных студий, дизайнеров, оптовиков: <strong>partners@ustyle.spb</strong></p>
+        </section>
+
+        <section id="faq">
+            <h2 class="section-title">Вопросы и ответы</h2>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div><strong>❓ Как узнать размер кольца?</strong><br> В салонах есть бесплатный измеритель. Или таблица ниже.</div>
+                <div><strong>❓ Настоящие ли камни?</strong><br> Да, сертификаты + паспорт бриллианта.</div>
+                <div><strong>❓ Можно ли заказать индивидуальное украшение?</strong><br> Да, ювелиры U’Style разработают эскиз.</div>
+                <div><strong>❓ Есть ли рассрочка?</strong><br> Рассрочка от банков-партнеров без переплат.</div>
+            </div>
+        </section>
+
+        <!-- ТАБЛИЦА КАРАТА / РАЗМЕРОВ -->
+        <section id="sizes">
+            <h2 class="section-title">Таблица карата / размер украшений</h2>
+            <div class="specs-table">
+                <table>
+                    <thead><tr><th>Тип украшения</th><th>Размер / Длина</th><th>Вес камня (карат) / Проба</th></tr></thead>
+                    <tbody>
+                        <tr><td>Кольца</td><td>15 - 23 размер (русские)</td><td>0.1 ct - 3.0 ct</td></tr>
+                        <tr><td>Серьги</td><td>Пусеты: 6-12 мм / Длинные: 2-5 см</td><td>до 2 ct в каждой серьге</td></tr>
+                        <tr><td>Подвески</td><td>Высота: 12-35 мм</td><td>0.05 - 1.5 ct</td></tr>
+                        <tr><td>Цепочки</td><td>40,45,50,55,60 см</td><td>проба 585, вес от 1.2 г</td></tr>
+                        <tr><td>Браслеты</td><td>16-21 см (регулируемые)</td><td>золото, серебро 925</td></tr>
+                        <tr><td>Наборы</td><td>комплект серьги+кольцо+подвеска</td><td>индивидуальный вес</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- ФУТЕР -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>U’Style 2026</h4>
+                <ul>
+                    <li><a href="#brand">О бренде</a></li>
+                    <li><a href="#shops">Магазины</a></li>
+                    <li><a href="#vacancies">Вакансии</a></li>
+                    <li><a href="#cooperation">Сотрудничество</a></li>
+                    <li><a href="#faq">Вопросы-ответы</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Помощь</h4>
+                <ul>
+                    <li><a href="#delivery">Доставка</a></li>
+                    <li><a href="#return">Обмен и возврат</a></li>
+                    <li><a href="#giftcards">Подарочные карты</a></li>
+                    <li><a href="#status">Статус заказа</a></li>
+                    <li><a href="#orders">Заказы</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Партнёрам</h4>
+                <ul>
+                    <li><a href="#cooperation">Сотрудничество</a></li>
+                    <li><a href="#vacancies">Вакансии</a></li>
+                    <li><a href="#brand">О бренде</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <div class="footer-contacts">
+                    <p><i class="fas fa-phone-alt"></i> 8 800 777-88-66</p>
+                    <p><i class="fas fa-envelope"></i> timofeeva@kursovayrabota.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Санкт-Петербург, Невский пр., 88</p>
+                    <p><i class="fas fa-clock"></i> Ежедневно 10:00 – 21:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">© 2026 U’Style Jewellery — Сияйте по-своему. Все права защищены.</div>
+            <div class="legal"></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.nav-links a, .footer-col a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    const offset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
